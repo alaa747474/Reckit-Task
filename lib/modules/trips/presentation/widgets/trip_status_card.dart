@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reckit_task/core/config/theme/custom_colors.dart';
+import 'package:reckit_task/core/constants/assets/icons_manager.dart';
 import 'package:reckit_task/core/extensions/size_extentions.dart';
+import 'package:reckit_task/core/widgets/app_svg_image.dart';
 
 class TripStatusCard extends StatelessWidget {
   final String title;
@@ -25,8 +27,8 @@ class TripStatusCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(title, style: Theme.of(context).textTheme.bodyMedium),
-
-          Icon(Icons.arrow_drop_down, color: Colors.white, size: 22.r),
+          SizedBox(width: 8.h,),
+          AppSvgImage(assetName: IconsManager.downArrow,)
         ],
       ),
     );

@@ -6,6 +6,7 @@ class IconsManager {
   static const String calendar = '$_base/calendar.svg';
   static const String notification = '$_base/notification.svg';
   static const String setting = '$_base/setting.svg';
+  static const String downArrow = '$_base/down-arrow.svg';
 
 
 
