@@ -9,6 +9,7 @@ class AppTheme {
   /// Get light theme
   static ThemeData get lightTheme {
     return ThemeData(
+      fontFamily: "Inter",
       useMaterial3: true,
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
