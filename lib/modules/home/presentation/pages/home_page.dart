@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:reckit_task/core/constants/app_sizes.dart';
 import 'package:reckit_task/core/di/service_locator.dart';
 import 'package:reckit_task/core/widgets/app_nav_bar.dart';
 import 'package:reckit_task/core/widgets/loading_indicator.dart';
@@ -24,13 +23,8 @@ class HomePage extends StatelessWidget {
               return CustomScrollView(
                 slivers: [
                   const SliverToBoxAdapter(child: ItemsHeaderRow()),
-                  SliverPadding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppSizes.horizontalPadding,
-                      vertical: AppSizes.verticalPadding,
-                    ),
-                    sliver: TripsGridView(trips: state.trips),
-                  ),
+
+                  TripsGridView(trips: state.trips),
                 ],
               );
             } else if (state is TripsLoading) {

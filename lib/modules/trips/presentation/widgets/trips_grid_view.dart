@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:reckit_task/modules/trips/domain/entities/trip_entity.dart';
 import 'package:reckit_task/modules/trips/presentation/widgets/trip_card.dart';
 
+import '../../../../core/constants/app_sizes.dart';
+
 class TripsGridView extends StatelessWidget {
   const TripsGridView({super.key, required this.trips});
   final List<TripEntity> trips;
@@ -12,21 +14,27 @@ class TripsGridView extends StatelessWidget {
       builder: (context, constraints) {
         final width = constraints.crossAxisExtent;
 
-        return SliverGrid(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: (MediaQuery.of(context).size.width ~/ 280).toInt(),
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: _getAspectRatio(width,(MediaQuery.of(context).size.width ~/ 280).toInt()),
+        return SliverPadding(
+          padding: EdgeInsets.symmetric(
+                      horizontal: AppSizes.horizontalPadding,
+                      vertical: AppSizes.verticalPadding,
+                    ),
+          sliver: SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: (MediaQuery.of(context).size.width ~/ 285).toInt(),
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: _getAspectRatio(width,(MediaQuery.of(context).size.width ~/ 285).toInt()),
+            ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final trip = trips[index];
+              return _AnimatedTripCard(
+                key: ValueKey('trip_${trip.id}'),
+                trip: trip,
+                index: index,
+              );
+            }, childCount: trips.length),
           ),
-          delegate: SliverChildBuilderDelegate((context, index) {
-            final trip = trips[index];
-            return _AnimatedTripCard(
-              key: ValueKey('trip_${trip.id}'),
-              trip: trip,
-              index: index,
-            );
-          }, childCount: trips.length),
         );
       },
     );
@@ -34,7 +42,7 @@ class TripsGridView extends StatelessWidget {
 
   double _getAspectRatio(double width, int crossAxisCount) {
     final itemWidth = (width - (16 * (crossAxisCount - 1))) / crossAxisCount;
-    const itemHeight = 340;
+    const itemHeight = 365;
     return itemWidth / itemHeight;
   }
 }
