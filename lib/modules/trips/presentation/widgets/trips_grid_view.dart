@@ -14,10 +14,10 @@ class TripsGridView extends StatelessWidget {
 
         return SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: (MediaQuery.of(context).size.width ~/ 270).toInt(),
+            crossAxisCount: (MediaQuery.of(context).size.width ~/ 280).toInt(),
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: _getAspectRatio(width,(MediaQuery.of(context).size.width ~/ 270).toInt()),
+            childAspectRatio: _getAspectRatio(width,(MediaQuery.of(context).size.width ~/ 280).toInt()),
           ),
           delegate: SliverChildBuilderDelegate((context, index) {
             final trip = trips[index];
