@@ -28,7 +28,7 @@ extension ResponsiveSize on num {
     if (context == null) return toDouble();
 
     final screenWidth = MediaQuery.of(context).size.width;
-    const designWidth = 375.0;
+    const designWidth = 1200;
     return (this * screenWidth) / designWidth;
   }
 

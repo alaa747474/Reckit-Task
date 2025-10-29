@@ -11,7 +11,6 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primarySwatch: Colors.blue,
       scaffoldBackgroundColor: Colors.black,
       cardColor: const Color(0xFF171717),
       extensions: const [CustomColors.dark],
