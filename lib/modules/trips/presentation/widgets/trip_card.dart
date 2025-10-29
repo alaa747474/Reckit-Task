@@ -49,15 +49,15 @@ class TripCard extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         TripStatusCard(title: trip.status ?? ""),
-        SizedBox(height: 18.h),
+        SizedBox(height: 18),
         Text(trip.title ?? "", style: Theme.of(context).textTheme.bodyLarge),
-        SizedBox(height: 8.h),
+        SizedBox(height: 8),
         Row(
           children: [
             AppSvgImage(assetName: IconsManager.calendar),
             SizedBox(width: 4.h),
             SizedBox(
-              width: constraints.maxWidth * 0.82,
+              width: constraints.maxWidth * 0.75,
               child: Text(
                 '5 ${AppStrings.nights} (${trip.dates?.start ?? ""} - ${trip.dates?.end ?? ""})',
                 style: Theme.of(context).textTheme.bodySmall,
@@ -65,8 +65,7 @@ class TripCard extends StatelessWidget {
             ),
           ],
         ),
-        Divider(),
-        SizedBox(height: 12.h),
+        Divider().verticalPadding(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
