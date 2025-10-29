@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:reckit_task/core/config/theme/custom_colors.dart';
+import 'package:reckit_task/core/widgets/app_network_image.dart';
 import 'package:reckit_task/modules/trips/domain/entities/participant_entity.dart';
 
 class ParticipantsStack extends StatelessWidget {
   final List<ParticipantEntity> participants;
-
 
   static const double _avatarRadius = 16;
   static const double _avatarOverlap = 20;
@@ -19,9 +19,11 @@ class ParticipantsStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final visibleCount = participants.length.clamp(0, _maxVisibleAvatars);
-    final remainingCount = participants.length > _maxVisibleAvatars ? participants.length - _maxVisibleAvatars : 0;
+    final remainingCount =
+        participants.length > _maxVisibleAvatars ? participants.length - _maxVisibleAvatars : 0;
 
-    final totalWidth = visibleCount * _avatarOverlap + (remainingCount > 0 ? _avatarRadius * 2 : _avatarRadius);
+    final totalWidth =
+        visibleCount * _avatarOverlap + (remainingCount > 0 ? _avatarRadius * 2 : _avatarRadius);
 
     return SizedBox(
       width: totalWidth,
@@ -56,10 +58,29 @@ class ParticipantsStack extends StatelessWidget {
       left: left,
       child: _buildAvatarContainer(
         context,
-        child: CircleAvatar(
-          radius: _avatarRadius,
-          backgroundColor: Colors.grey[700],
-          backgroundImage: (imageUrl != null && imageUrl.isNotEmpty) ? NetworkImage(imageUrl) : null,
+        child: ClipOval(
+          child: AppNetworkImage(
+            imageUrl: imageUrl ?? '',
+            width: _avatarRadius * 2,
+            height: _avatarRadius * 2,
+            fit: BoxFit.cover,
+            // placeholder: Container(
+            //   width: _avatarRadius * 2,
+            //   height: _avatarRadius * 2,
+            //   color: Colors.grey.shade200,
+            // ),
+            // errorWidget: Container(
+            //   width: _avatarRadius * 2,
+            //   height: _avatarRadius * 2,
+            //   color: Colors.grey.shade300,
+            //   alignment: Alignment.center,
+            //   child: const Icon(
+            //     Icons.person,
+            //     size: 16,
+            //     color: Colors.grey,
+            //   ),
+            // ),
+          ),
         ),
       ),
     );
