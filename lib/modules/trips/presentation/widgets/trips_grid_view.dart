@@ -9,7 +9,7 @@ class TripsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: (MediaQuery.of(context).size.width ~/ 270).toInt(),
+        crossAxisCount: (MediaQuery.of(context).size.width ~/ 275).toInt(),
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
         childAspectRatio: _getAspectRatio(context),
@@ -38,7 +38,7 @@ class TripsGridView extends StatelessWidget {
 
   double _getAspectRatio(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final crossAxisCount = (width ~/ 270).toInt();
+    final crossAxisCount = (width ~/ 275).toInt();
     const itemHeight = 380;
     final itemWidth = width / crossAxisCount;
     return itemWidth / itemHeight;
