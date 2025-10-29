@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reckit_task/core/widgets/loading_indicator.dart';
 
 class AppNetworkImage extends StatelessWidget {
   final String imageUrl;
@@ -36,9 +37,9 @@ class AppNetworkImage extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                color: Colors.grey.shade200,
+                color: Theme.of(context).dividerColor,
                 alignment: Alignment.center,
-                child: const CircularProgressIndicator(strokeWidth: 2),
+                child: const LoadingIndicator(),
               );
         },
         // ✅ Display a fallback widget if loading fails
@@ -47,10 +48,10 @@ class AppNetworkImage extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                color: Colors.grey.shade300,
+                color: Theme.of(context).dividerColor,
                 alignment: Alignment.center,
                 child: const Icon(
-                  Icons.broken_image_outlined,
+                  Icons.error_outline_outlined,
                   color: Colors.grey,
                 ),
               );
