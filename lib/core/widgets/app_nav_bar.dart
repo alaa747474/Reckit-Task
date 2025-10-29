@@ -68,7 +68,7 @@ class _AppNavBarState extends State<AppNavBar> {
     });
 
     return Container(
-      color: Colors.black,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -121,36 +121,13 @@ class _AppNavBarState extends State<AppNavBar> {
                       ),
                     );
                   }),
-
+                if (ResponsiveUtils.isDesktop(context))
+                  _buildVerticalDivider(context),
                 AppSvgImage(assetName: IconsManager.setting),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.w),
                 AppSvgImage(assetName: IconsManager.notification),
-                const SizedBox(width: 24),
-
-                Container(width: 1, height: 24, color: Colors.grey[800]),
-                const SizedBox(width: 24),
-
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 14,
-                      backgroundImage: NetworkImage(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Picture_with_Mbapp%C3%A9_%28cropped%29.jpg/250px-Picture_with_Mbapp%C3%A9_%28cropped%29.jpg',
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Alaa Reda',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(width: 8),
-                    AppSvgImage(
-                      assetName: IconsManager.downArrow,
-                      width: 8.h,
-                      height: 8.h,
-                    ),
-                  ],
-                ),
+                _buildVerticalDivider(context),
+                _buildUserAvatarAndName(context),
               ],
             ),
           ),
@@ -178,6 +155,32 @@ class _AppNavBarState extends State<AppNavBar> {
             ),
         ],
       ),
+    );
+  }
+
+  Row _buildUserAvatarAndName(BuildContext context) {
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 14,
+          backgroundImage: NetworkImage(
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Picture_with_Mbapp%C3%A9_%28cropped%29.jpg/250px-Picture_with_Mbapp%C3%A9_%28cropped%29.jpg',
+          ),
+        ),
+        SizedBox(width: 12.w),
+        Text('Alaa Reda', style: Theme.of(context).textTheme.bodyMedium),
+        SizedBox(width: 12.w),
+        AppSvgImage(assetName: IconsManager.downArrow, width: 8, height: 8),
+      ],
+    );
+  }
+
+  Container _buildVerticalDivider(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24.w),
+      width: 1,
+      height: 24,
+      color: Theme.of(context).dividerColor,
     );
   }
 }
