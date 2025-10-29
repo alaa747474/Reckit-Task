@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reckit_task/core/constants/assets/icons_manager.dart';
-import 'package:reckit_task/core/extensions/size_extentions.dart';
 import 'package:reckit_task/core/widgets/app_svg_image.dart';
 
 class MoreOptionsButton extends StatelessWidget {
@@ -12,7 +11,7 @@ class MoreOptionsButton extends StatelessWidget {
       onTap: onTap,
       child: CircleAvatar(
         backgroundColor: Theme.of(context).cardColor,
-        radius: 16.r,
+        radius: 16,
         child: AppSvgImage(assetName: IconsManager.horizontalDots),
       ),
     );
