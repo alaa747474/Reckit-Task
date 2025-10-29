@@ -65,7 +65,7 @@ class TripCard extends StatelessWidget {
             ),
           ],
         ),
-        Divider().verticalPadding(8),
+        Divider(color: Theme.of(context).dividerColor,thickness: 0.5,).verticalPadding(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
